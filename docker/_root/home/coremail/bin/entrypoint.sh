@@ -1,12 +1,4 @@
 #!/bin/sh
 
 
-run() {
-    echo "entry point"
-}
-
-
-run
-
-"$@"
-
+exec dockerd-entrypoint.sh ${DOCKER_OPTS} $@
