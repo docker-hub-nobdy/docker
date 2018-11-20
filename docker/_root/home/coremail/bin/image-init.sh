@@ -1,11 +1,7 @@
 #!/bin/sh
 
 
-mkdir -p /etc/docker
+sed -i -r 's/^( *)("\$@" *)$/\1${DOCKER_OPTS} \2/' /usr/local/bin/dockerd-entrypoint.sh
 
-cat >> /etc/docker/daemon.json <<_DEF
-{
-  "insecure-registries": ["http://registry.192.168.200.30.nip.io"]
-}
-_DEF
+echo "/usr/local/bin/dockerd-entrypoint.sh patched" >> /patch_result
 
