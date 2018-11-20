@@ -1,8 +1,8 @@
 FROM docker:stable-dind
 MAINTAINER Simon <shuang@coremail.cn>
-COPY _root /
 
-RUN sh /home/coremail/bin/image-init.sh
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod a+x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT ["/bin/sh", "/home/coremail/bin/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
 CMD []
