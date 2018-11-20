@@ -5,4 +5,7 @@ sed -i -r 's/^([\t ]*)("\$@"[\t ]*)$/\1${DOCKER_OPTS} \2/' /usr/local/bin/docker
 
 sed -i 'N22aecho "$@" >> /patch_result' /usr/local/bin/dockerd-entrypoint.sh
 
+sed -i 'N22aecho "DOCKER_HOST: ${DOCKER_HOST}" >> /patch_result' /usr/local/bin/dockerd-entrypoint.sh
+
+
 echo "/usr/local/bin/dockerd-entrypoint.sh patched" >> /patch_result
